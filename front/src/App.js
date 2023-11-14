@@ -1,8 +1,17 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Register from "./Register";
+import Home from "./Home";
+import { Navigate, Route, Routes } from "react-router";
+import { useState } from "react";
 
 function App() {
-  return <Register></Register>;
+  const [user, setUser] = useState([]);
+  return (
+    <div>
+      <Register setUser={setUser} />
+      <Home />
+    </div>
+  );
 }
 
 export default App;
