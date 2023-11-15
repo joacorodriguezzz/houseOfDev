@@ -1,5 +1,5 @@
 import React from "react";
-import "./components/form.css";
+import "../components/form.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Cambiado de useHistory a useNavigate
@@ -26,6 +26,7 @@ export default function Register({ setUser }) {
       })
       .then((res) => {
         alert("Registro exitoso");
+        navigate("/login");
       })
       .catch((err) => console.log(err));
   };
