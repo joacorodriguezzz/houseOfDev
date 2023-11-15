@@ -2,21 +2,32 @@ import React from "react";
 import "./components/form.css";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Cambiado de useHistory a useNavigate
 
 export default function Register({ setUser }) {
   const [email, setEmail] = useState("");
-  const [usuario, setUsuario] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
+  const navigate = useNavigate(); // Cambiado de useHistory a useNavigate
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (usuario === "" || password === "" || email === "") {
+    if (name === "" || password === "" || email === "") {
       setError(true);
       return;
     } else setError(false);
-    setUser([usuario]);
+    setUser([name]);
+    axios
+      .post("http://localhost:3001/api/register", {
+        email: email,
+        name: name,
+        password: password,
+      })
+      .then((res) => {
+        alert("Registro exitoso");
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -53,8 +64,8 @@ export default function Register({ setUser }) {
             id="username"
             type="text"
             placeholder="Username"
-            value={usuario}
-            onChange={(e) => setUsuario(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div className="mb-6">
