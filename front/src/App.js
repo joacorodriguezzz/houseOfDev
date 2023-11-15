@@ -11,6 +11,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route path="/logIn" element={<Login />} />
       </Routes>
     </Router>
   );
