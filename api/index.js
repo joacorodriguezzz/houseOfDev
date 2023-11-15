@@ -4,10 +4,12 @@ const morgan = require("morgan");
 const db = require("./configs/db");
 const models = require("./models");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 const routes = require("./routes");
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(
   cors({

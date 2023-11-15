@@ -26,6 +26,7 @@ export default function Register({ setUser }) {
       })
       .then((res) => {
         alert("Registro exitoso");
+        navigate("/login");
       })
       .catch((err) => console.log(err));
   };
