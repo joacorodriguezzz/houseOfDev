@@ -1,9 +1,9 @@
 import "./App.css";
-import Register from "./Register";
-import Home from "./Home";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
-import Login from "./Login";
+import Login from "./pages/Login";
 
 function App() {
   const [user, setUser] = useState([]);

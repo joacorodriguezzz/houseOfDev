@@ -1,5 +1,5 @@
 import React from "react";
-import "./components/form.css";
+import "../components/form.css";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Cambiado de useHistory a useNavigate
