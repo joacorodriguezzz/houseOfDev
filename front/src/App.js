@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register setUser={setUser} />} />
+        <Route path="/logIn" element={<Login />} />
       </Routes>
     </Router>
   );

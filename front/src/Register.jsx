@@ -95,7 +95,7 @@ export default function Register({ setUser }) {
           </button>
           <a
             className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            href="#"
+            href="/login"
           >
             Ya tienes una cuenta?
           </a>

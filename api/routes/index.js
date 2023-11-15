@@ -3,6 +3,11 @@ const router = express.Router();
 const User = require("../models/User");
 const { generateToken } = require("../configs/tokens");
 
+router.post("/login", (req, res) => {
+  const { email, password, username } = req.body;
+  User.findOne({ where: { email } }).then((user) => {});
+});
+
 router.post("/register", (req, res) => {
   User.create(req.body).then((user) => {
     console.log("USER", user);
