@@ -1,9 +1,47 @@
-import React from "react";
+// Importa useState y useEffect
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../context/user";
 
 export default function Login() {
+  const { setUser, setError } = useAuthContext();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setEmail(email);
+    setPassword(password);
+  }, [email, password]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios
+      .post(
+        "http://localhost:3001/api/login",
+        {
+          email: email,
+          password: password,
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        const { data } = response;
+        setUser(data);
+        navigate("/home");
+      })
+      .catch(({ response }) => {
+        alert("Los datos proporcionados son invalidos");
+      });
+  };
   return (
     <div className="mx-auto max-w-md mt-8">
-      <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        onSubmit={handleSubmit}
+      >
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -16,6 +54,8 @@ export default function Login() {
             id="email"
             type="email"
             placeholder="usuario@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -31,6 +71,8 @@ export default function Login() {
             id="password"
             type="password"
             placeholder="********"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <p className="text-red-500 text-xs italic">Ingrese una contraseña.</p>
         </div>
