@@ -2,14 +2,14 @@ import React from "react";
 import "../components/form.css";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Cambiado de useHistory a useNavigate
+import { useNavigate } from "react-router-dom";
 
 export default function Register({ setUser }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const navigate = useNavigate(); // Cambiado de useHistory a useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
