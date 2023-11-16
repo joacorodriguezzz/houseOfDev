@@ -3,11 +3,6 @@ const router = express.Router();
 const User = require("../models/User");
 const { generateToken } = require("../configs/tokens");
 
-router.post("/login", (req, res) => {
-  const { email, password, username } = req.body;
-  User.findOne({ where: { email } }).then((user) => {});
-});
-
 router.post("/register", (req, res) => {
   User.create(req.body).then((user) => {
     console.log("USER", user);
@@ -29,7 +24,7 @@ router.post("/login", (req, res) => {
         email: user.email,
         name: user.name,
       };
-      generateToken(payload);
+      const token = generateToken(payload);
 
       res.cookie("token", token);
       res.send(payload);
@@ -37,6 +32,20 @@ router.post("/login", (req, res) => {
   });
 });
 
+router.get("/home", (req, res) => {
+  const user = {
+    name: "fran",
+  };
+  res.send({ user });
+});
+/*
+router.post("/logout", (req, res) => {
+  res.clearCookie("token");
+
+  res.sendStatus(204);
+});
+
+*/
 router.use("/", function (req, res) {
   res.sendStatus(404);
 });
