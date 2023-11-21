@@ -2,9 +2,16 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const { generateToken } = require("../configs/tokens");
+const { validateAuth } = require("../middleware/auth");
+const { validateToken } = require("../configs/tokens");
 
 router.post("/register", (req, res) => {
-  User.create(req.body).then((user) => {
+  User.create({
+    email: req.body.email,
+    name: req.body.name,
+    password: req.body.password,
+    isAdmin: false,
+  }).then((user) => {
     console.log("USER", user);
 
     res.status(201).send(user);
@@ -32,20 +39,19 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.get("/home", (req, res) => {
-  const user = {
-    name: "fran",
-  };
-  res.send({ user });
+router.get("/home", validateAuth, (req, res) => {
+  res.send(req.user);
 });
-/*
+
+router.get("/me", validateAuth, (req, res) => {
+  res.send(req.user);
+});
+
 router.post("/logout", (req, res) => {
   res.clearCookie("token");
-
   res.sendStatus(204);
 });
 
-*/
 router.use("/", function (req, res) {
   res.sendStatus(404);
 });
