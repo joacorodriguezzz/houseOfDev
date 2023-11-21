@@ -7,7 +7,7 @@ export default function Logged() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    axios.post("/api/logout").then(() => {
+    axios.post("http://localhost:3001/api/logout").then(() => {
       setUser({});
       navigate("/");
     });
@@ -27,6 +27,7 @@ export default function Logged() {
   return (
     <div>
       <h1>bienvenido, {user.name}</h1>
+      <button onClick={handleLogout}>logout</button>
     </div>
   );
 }
