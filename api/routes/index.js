@@ -34,13 +34,9 @@ router.post("/login", (req, res) => {
       const token = generateToken(payload);
 
       res.cookie("token", token);
-      res.send(payload);
+      res.send({ user: payload, token });
     });
   });
-});
-
-router.get("/home", validateAuth, (req, res) => {
-  res.send(req.user);
 });
 
 router.get("/me", validateAuth, (req, res) => {

@@ -2,10 +2,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/user";
 
 export default function Login() {
-  const { setUser, setError } = useAuthContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -29,7 +27,7 @@ export default function Login() {
       )
       .then((response) => {
         const { data } = response;
-        setUser(data);
+
         navigate("/home");
       })
       .catch(({ response }) => {
