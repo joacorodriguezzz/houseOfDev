@@ -2,16 +2,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../state/user";
 
 export default function Login() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setEmail(email);
-    setPassword(password);
-  }, [email, password]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,10 +25,12 @@ export default function Login() {
         { withCredentials: true }
       )
       .then((response) => {
-        const { data } = response;
-
+        const data = response.data;
+        window.localStorage.setItem("token", data.token);
+        dispatch(setUser(data.user));
         navigate("/home");
       })
+
       .catch(({ response }) => {
         alert("Los datos proporcionados son invalidos");
       });

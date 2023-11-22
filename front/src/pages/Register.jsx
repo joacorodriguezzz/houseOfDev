@@ -1,23 +1,35 @@
-import React from "react";
-import "../components/form.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "../state/user";
 
-export default function Register({ setUser }) {
+export default function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Verifica si las contraseñas coinciden antes de realizar la llamada a la API
+    if (password !== confirmPassword) {
+      setError(true);
+      alert("Las contraseñas no coinciden");
+      return;
+    } else {
+      setError(false);
+    }
+
     if (name === "" || password === "" || email === "") {
       setError(true);
       return;
     } else setError(false);
-    setUser([name]);
+
     axios
       .post("http://localhost:3001/api/register", {
         email: email,
@@ -25,10 +37,12 @@ export default function Register({ setUser }) {
         password: password,
       })
       .then((res) => {
+        // dispatch
+        dispatch(setUser({ id: res.data.id, name: res.data.name }));
         alert("Registro exitoso");
         navigate("/login");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert("Ya existe un usuario con ese email"));
   };
 
   return (
@@ -85,6 +99,31 @@ export default function Register({ setUser }) {
             onChange={(e) => setPassword(e.target.value)}
           />
           <p className="text-red-500 text-xs italic">Ingrese una contraseña.</p>
+        </div>
+
+        <div className="mb-6">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="confirmPassword"
+          >
+            Confirmar Contraseña
+          </label>
+          <input
+            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            id="confirmPassword"
+            type="password"
+            placeholder="********"
+            value={confirmPassword}
+            onChange={(e) => {
+              setConfirmPassword(e.target.value);
+            }}
+          />
+
+          {error && (
+            <p className="text-red-500 text-xs italic">
+              Las contraseñas no coinciden.
+            </p>
+          )}
         </div>
         <div className="flex items-center justify-between">
           <button
