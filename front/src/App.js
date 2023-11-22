@@ -1,10 +1,10 @@
 import "./App.css";
 import Register from "./pages/Register";
-import Home from "./pages/Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Login from "./pages/Login";
-import Logged from "./pages/Logged";
+import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
 import axios from "axios";
 import { useEffect } from "react";
 
@@ -24,14 +24,16 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/logIn" element={<Login />} />
-        <Route path="/home" element={<Logged />} />
-      </Routes>
-    </Router>
+    <div>
+      <NavBar />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/logIn" element={<Login />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
