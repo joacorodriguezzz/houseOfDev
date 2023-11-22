@@ -9,13 +9,12 @@ import axios from "axios";
 import { useEffect } from "react";
 
 function App() {
-  const handleLogout = () => {
-    axios.post("http://localhost:3001/api/logout").then(() => {});
-  };
-
   useEffect(() => {
     axios
-      .get("http://localhost:3001/api/me", { withCredentials: true })
+      .get("http://localhost:3001/api/me", {
+        withCredentials: true,
+        token: window.localStorage.getItem("token"),
+      })
       .then((res) => {
         const user = res.data;
       })
