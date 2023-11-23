@@ -8,9 +8,11 @@ function NavBar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    axios.post("http://localhost:3001/api/logout").then(() => {
-      dispatch(setUser(null));
-    });
+    axios
+      .post("http://localhost:3001/api/logout", {}, { withCredentials: true })
+      .then(() => {
+        dispatch(setUser(null));
+      });
   };
 
   return (
