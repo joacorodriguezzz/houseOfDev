@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import axios from "axios";
 import { useEffect } from "react";
+import Logged from "./pages/Logged";
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,7 @@ function App() {
       <NavBar />
       <Router>
         <Routes>
+          <Route path="/inicio" element={<Logged />}></Route>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/logIn" element={<Login />} />
