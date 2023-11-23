@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function PropertiesContainer() {
   const inmuebles = [
@@ -73,11 +74,13 @@ function PropertiesContainer() {
     <div style={gridContainerStyle}>
       {inmuebles.map((inmueble) => (
         <div key={inmueble.id} style={inmuebleCardStyle}>
-          <img
-            src={inmueble.poster}
-            alt={inmueble.title}
-            style={inmuebleImageStyle}
-          />
+          <Link to="/login">
+            <img
+              src={inmueble.poster}
+              alt={inmueble.title}
+              style={inmuebleImageStyle}
+            />
+          </Link>
           <div>
             <h3>{inmueble.title}</h3>
           </div>
