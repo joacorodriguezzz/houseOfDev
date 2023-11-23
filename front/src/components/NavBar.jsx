@@ -1,7 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { setUser } from "../state/user";
+import { useDispatch } from "react-redux";
 
 function NavBar() {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    axios.post("http://localhost:3001/api/logout").then(() => {
+      dispatch(setUser(null));
+    });
+  };
+
   return (
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -51,6 +62,15 @@ function NavBar() {
                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Iniciar Sesion
+              </a>
+            </li>
+            <li>
+              <a
+                href="/login"
+                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                onClick={handleLogout}
+              >
+                Cerrar sesión
               </a>
             </li>
           </ul>

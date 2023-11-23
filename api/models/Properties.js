@@ -38,6 +38,4 @@ Properties.init(
   }
 );
 
-// Ejemplo de creación de 30 edificios ficticios en Buenos Aires
-
 module.exports = Properties;

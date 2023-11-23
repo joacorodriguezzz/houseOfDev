@@ -15,9 +15,5 @@ export default function Logged() {
     });
   };
 
-  return (
-    <div>
-      <button onClick={handleLogout}>logout</button>
-    </div>
-  );
+  return <div></div>;
 }
