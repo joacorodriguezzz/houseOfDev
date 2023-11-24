@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { setUser } from "./state/user";
 import { useSelector } from "react-redux";
 import Profile from "./pages/Profile";
+import CrearPropiedad from "./pages/CrearPropiedad";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -40,6 +41,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/logIn" element={<Login />} />
             <Route path="/admin" element={<h1>JOACO ES ADMIN</h1>} />
+            <Route path="/crear-propiedad" element={<CrearPropiedad />} />
           </>
         ) : (
           <>
