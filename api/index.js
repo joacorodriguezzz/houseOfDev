@@ -18,7 +18,7 @@ app.use(
   })
 );
 app.use("/api", routes);
-db.sync({ force: true })
+db.sync({ force: false })
   .then(function () {
     app.listen(3001, () =>
       console.log("Servidor escuchando en el puerto 3001")
