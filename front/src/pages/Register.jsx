@@ -31,7 +31,7 @@ export default function Register() {
     } else setError(false);
 
     axios
-      .post("http://localhost:3001/api/register", {
+      .post("http://localhost:3001/api/user/register", {
         email: email,
         name: name,
         password: password,
