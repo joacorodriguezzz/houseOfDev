@@ -17,7 +17,7 @@ export default function Login() {
 
     axios
       .post(
-        "http://localhost:3001/api/login",
+        "http://localhost:3001/api/user/login",
         {
           email: email,
           password: password,
@@ -26,8 +26,7 @@ export default function Login() {
       )
       .then((response) => {
         const data = response.data;
-        window.localStorage.setItem("token", data.token);
-        dispatch(setUser(data.user));
+        dispatch(setUser(data));
         navigate("/");
       })
 
