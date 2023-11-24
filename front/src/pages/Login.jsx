@@ -28,7 +28,7 @@ export default function Login() {
         const data = response.data;
         window.localStorage.setItem("token", data.token);
         dispatch(setUser(data.user));
-        navigate("/inicio");
+        navigate("/");
       })
 
       .catch(({ response }) => {
