@@ -32,7 +32,7 @@ Properties.init(
   },
   {
     sequelize: sequelize,
-    modelName: "edificio",
+    modelName: "edificios",
   }
 );
 

@@ -18,7 +18,7 @@ export default function CrearPropiedad() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/api/user/register", {
+      .post("http://localhost:3000/crear-propiedad", {
         cantidadAmbientes,
         ubicacion,
         barrio,
