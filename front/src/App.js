@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./state/user";
 import { useSelector } from "react-redux";
+import Profile from "./pages/Profile";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -29,7 +30,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="bg-[#F7F3EE]">
       <NavBar />
 
       <Routes>
@@ -42,6 +43,7 @@ function App() {
           </>
         ) : (
           <>
+            <Route path="/profile" element={<Profile />} />
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logIn" element={<Login />} />

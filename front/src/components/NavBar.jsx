@@ -15,12 +15,13 @@ function NavBar() {
         { withCredentials: true }
       )
       .then(() => {
-        dispatch(setUser(null));
+        dispatch(setUser({ id: null, email: null, name: null }));
       });
   };
+
   const user = useSelector((state) => state.user);
   return (
-    <nav class="bg-[#FE4236] ">
+    <nav class={user.email && user.isAdmin ? "bg-[#0000ff]" : "bg-[#FE4236]"}>
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
@@ -53,12 +54,12 @@ function NavBar() {
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
-            {!user ? (
+            {!user.email ? (
               <>
                 <li>
                   <Link
                     to="/register"
-                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Registrarse
                   </Link>
@@ -67,22 +68,44 @@ function NavBar() {
                 <li>
                   <Link
                     to="/login"
-                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
-                    Iniciar Sesion
+                    Iniciar Sesión
+                  </Link>
+                </li>
+              </>
+            ) : user && user.isAdmin ? (
+              <>
+                <li>
+                  <Link
+                    to="/admin-dashboard"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Añadir propiedades
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/login"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    onClick={handleLogout}
+                  >
+                    Cerrar Sesión
                   </Link>
                 </li>
               </>
             ) : (
-              <li>
-                <Link
-                  to="/login"
-                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                  onClick={handleLogout}
-                >
-                  Cerrar sesión
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link
+                    to="/login"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    onClick={handleLogout}
+                  >
+                    Cerrar Sesión
+                  </Link>
+                </li>
+              </>
             )}
           </ul>
         </div>
