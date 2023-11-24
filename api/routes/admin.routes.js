@@ -62,4 +62,14 @@ router.delete("/users/:id", (req, res) => {
     });
 });
 
+router.put("/users/:id", (req, res) => {
+  const userId = req.params.id;
+  const { email, name } = req.body;
+
+  User.findOne({ where: { id: userId } }).then((user) => {
+    user.email = email;
+    user.name = name;
+  });
+});
+
 module.exports = router;
