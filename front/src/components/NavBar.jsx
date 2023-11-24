@@ -2,25 +2,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { setUser } from "../state/user";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function NavBar() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    axios.post("http://localhost:3001/api/logout").then(() => {
-      dispatch(setUser(null));
-    });
+    axios
+      .post(
+        "http://localhost:3001/api/user/logout",
+        {},
+        { withCredentials: true }
+      )
+      .then(() => {
+        dispatch(setUser(null));
+      });
   };
-
+  const user = useSelector((state) => state.user);
   return (
     <nav class="bg-[#FE4236] ">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <Link to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
           <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             HOD
           </span>
-        </a>
+        </Link>
         <button
           data-collapse-toggle="navbar-default"
           type="button"
@@ -47,32 +53,37 @@ function NavBar() {
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
           <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
-            <li>
-              <a
-                href="/register"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Registrarse
-              </a>
-            </li>
+            {!user ? (
+              <>
+                <li>
+                  <Link
+                    to="/register"
+                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Registrarse
+                  </Link>
+                </li>
 
-            <li>
-              <a
-                href="/login"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Iniciar Sesion
-              </a>
-            </li>
-            <li>
-              <a
-                href="/login"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                onClick={handleLogout}
-              >
-                Cerrar sesión
-              </a>
-            </li>
+                <li>
+                  <Link
+                    to="/login"
+                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Iniciar Sesion
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link
+                  to="/login"
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  onClick={handleLogout}
+                >
+                  Cerrar sesión
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

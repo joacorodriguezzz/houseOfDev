@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../configs/db");
 
 class Properties extends Model {}
 
@@ -20,7 +21,7 @@ Properties.init(
       type: DataTypes.STRING,
     },
     precio: {
-      type: DataTypes.DECIMAL(10, 2),
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     baños: {
