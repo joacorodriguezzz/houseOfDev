@@ -1,12 +1,13 @@
 const db = require("../configs/db");
 const { Properties } = require("../models");
-const FakeData = require("./fakeData");
+const fakeData = require("./fakeData");
 
 async function seed() {
   try {
-    await db.sync({ force: false });
-    const data = await Properties.bulkCreate(FakeData);
+    await db.sync({ force: false }); // Cambiado a force: true para recrear las tablas
+    const data = await Properties.bulkCreate(fakeData);
     console.log(data);
+    console.log(fakeData);
     process.exit(0);
   } catch (error) {
     console.error("Error during seeding:", error);
