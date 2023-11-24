@@ -17,9 +17,6 @@ Properties.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    coordenadas: {
-      type: DataTypes.STRING,
-    },
     precio: {
       type: DataTypes.INTEGER,
       allowNull: false,
