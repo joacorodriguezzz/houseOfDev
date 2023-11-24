@@ -18,7 +18,7 @@ export default function CrearPropiedad() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3000/crear-propiedad", {
+      .post("http://localhost:3001/api/properties/crearPropiedad", {
         cantidadAmbientes,
         ubicacion,
         barrio,
@@ -97,7 +97,7 @@ export default function CrearPropiedad() {
                 <option>Barracas</option>
                 <option>Palermo</option>
                 <option>Belgrano</option>
-                <option>Recoleta</option>
+                <option>Wilde</option>
               </select>
             </div>
 
