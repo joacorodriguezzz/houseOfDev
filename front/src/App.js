@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import Profile from "./pages/Profile";
 import CrearPropiedad from "./pages/CrearPropiedad";
 import FilterList from "./components/filterList";
-
+import SingleView from "./pages/SingleView";
 function App() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#F7F3EE]">
+    <div className="bg-[#F7F3EE] w-[100%] min-h-[100vh] ">
       <NavBar />
 
       <Routes>
@@ -43,6 +43,9 @@ function App() {
             <Route path="/logIn" element={<Login />} />
             <Route path="/admin" element={<h1>JOACO ES ADMIN</h1>} />
             <Route path="/crear-propiedad" element={<CrearPropiedad />} />
+            <Route path="/prueba" element={<FilterList />} />
+
+            <Route path="/propiedades/:id" element={<SingleView />} />
           </>
         ) : (
           <>
@@ -51,6 +54,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/logIn" element={<Login />} />
             <Route path="/prueba" element={<FilterList />} />
+            <Route path="/propiedades/:id" element={<SingleView />} />
           </>
         )}
         {!user.email && <Route path="/" element={<Home />} />}

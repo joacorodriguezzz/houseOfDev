@@ -5,31 +5,33 @@ import { setUser } from "../state/user";
 import { useState } from "react";
 
 export default function CrearPropiedad() {
+  const navigate = useNavigate();
   const [cantidadAmbientes, setCantidadAmbientes] = useState("");
   const [ubicacion, setUbicacion] = useState("");
   const [barrio, setBarrio] = useState("");
   const [precio, setPrecio] = useState("");
   const [baños, setBaños] = useState("");
   const [metrosCuadrados, setMetrosCuadrados] = useState("");
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
+  const [bañosSeleccionados, setBañosSeleccionados] = useState("1");
+  const [descripcion, setDescripcion] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/api/properties/crearPropiedad", {
-        cantidadAmbientes,
+      .post("http://localhost:3001/api/properties/propiedades", {
+        cantidadAmbientes: parseInt(cantidadAmbientes),
         ubicacion,
         barrio,
-        precio,
-        baños,
-        metrosCuadrados,
+        precio: parseInt(precio),
+        baños: parseInt(bañosSeleccionados),
+        metrosCuadrados: parseInt(metrosCuadrados),
+        ambientes: parseInt(cantidadAmbientes),
+        baños: parseInt(bañosSeleccionados),
+        descripcion,
       })
       .then((res) => {
-        // dispatch
-        dispatch(setUser({ id: res.data.id, name: res.data.name }));
-        alert("Registro de propiedad exitoso");
+        alert("propiedad creada correctamente");
         navigate("/");
       })
       .catch((err) =>
@@ -38,8 +40,8 @@ export default function CrearPropiedad() {
   };
 
   return (
-    <div>
-      <form class="w-full max-w-lg">
+    <div className="w-[100%] min-h-[100vh] flex justify-center items-center">
+      <form class="w-full max-w-lg" onSubmit={handleSubmit}>
         <div class="flex flex-wrap -mx-3 mb-6">
           <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label
@@ -53,6 +55,8 @@ export default function CrearPropiedad() {
               id="grid-first-name"
               type="text"
               placeholder="Ejemplo: Calle falsa 123"
+              value={ubicacion}
+              onChange={(e) => setUbicacion(e.target.value)}
             ></input>
             <p class="text-red-500 text-xs italic">
               Por favor, llene este espacio.
@@ -70,6 +74,8 @@ export default function CrearPropiedad() {
               id="grid-price"
               type="text"
               placeholder="$"
+              value={precio}
+              onChange={(e) => setPrecio(e.target.value)}
             ></input>
           </div>
         </div>
@@ -85,6 +91,8 @@ export default function CrearPropiedad() {
               <select
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-state"
+                value={barrio}
+                onChange={(e) => setBarrio(e.target.value)}
               >
                 <option>Puerto Madero</option>
                 <option>Boedo</option>
@@ -114,9 +122,12 @@ export default function CrearPropiedad() {
             >
               Ambientes
             </label>
+
             <select
               class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
               id="grid-environments"
+              value={cantidadAmbientes}
+              onChange={(e) => setCantidadAmbientes(e.target.value)}
             >
               <option>1</option>
               <option>2</option>
@@ -138,6 +149,8 @@ export default function CrearPropiedad() {
               <select
                 class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-bathrooms"
+                value={bañosSeleccionados}
+                onChange={(e) => setBañosSeleccionados(e.target.value)}
               >
                 <option>1</option>
                 <option>2</option>
@@ -170,11 +183,15 @@ export default function CrearPropiedad() {
               id="grid-squareMeters"
               type="text"
               placeholder="m2"
+              value={metrosCuadrados}
+              onChange={(e) => setMetrosCuadrados(e.target.value)}
             ></input>
             <div class="w-full md:w-200/1 px-3 mb-6 md:mb-100">
               <label
                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 for="grid-first-name"
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
               >
                 Descripcion
               </label>
@@ -191,7 +208,7 @@ export default function CrearPropiedad() {
                 type="submit"
                 padding="50px"
               >
-                <a>Publicar</a>
+                Publicar
               </button>
             </div>
           </div>
