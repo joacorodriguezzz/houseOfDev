@@ -28,10 +28,16 @@ User.init(
     salt: {
       type: DataTypes.STRING,
     },
+
+    phone: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

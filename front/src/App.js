@@ -12,6 +12,7 @@ import { setUser } from "./state/user";
 import { useSelector } from "react-redux";
 import Profile from "./pages/Profile";
 import CrearPropiedad from "./pages/CrearPropiedad";
+import FilterList from "./components/filterList";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -49,6 +50,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/logIn" element={<Login />} />
+            <Route path="/prueba" element={<FilterList />} />
           </>
         )}
         {!user.email && <Route path="/" element={<Home />} />}

@@ -4,7 +4,7 @@ const User = require("../models/User");
 const Properties = require("../models/Properties");
 
 router.post("/register", (req, res) => {
-  const { email, name, password } = req.body;
+  const { email, name, password, phone } = req.body;
 
   User.findOne({ where: { email } }).then((userExist) => {
     if (userExist) {
@@ -14,6 +14,7 @@ router.post("/register", (req, res) => {
     User.create({
       email,
       name,
+      phone,
       password,
       isAdmin: true,
     })
@@ -64,12 +65,34 @@ router.delete("/users/:id", (req, res) => {
 
 router.put("/users/:id", (req, res) => {
   const userId = req.params.id;
-  const { email, name } = req.body;
+  const { email, name, phone } = req.body;
 
-  User.findOne({ where: { id: userId } }).then((user) => {
-    user.email = email;
-    user.name = name;
-  });
+  User.update(
+    req.body,
+    {
+      where: {
+        id: userId,
+      },
+      returning: true,
+    }.then(([affectedRows, updated]) => {
+      const user = updated[0];
+      res.send(user);
+    })
+  );
 });
-
+/*
+router.put("/:urlTitle", (req, res, next) => {
+  Pages.update(req.body, {
+    where: {
+      urlTitle: req.params.urlTitle,
+    },
+    returning: true,
+  })
+    .then(([affectedRows, updated]) => {
+      const page = updated[0];
+      res.send(page);
+    })
+    .catch(next);
+});
+*/
 module.exports = router;

@@ -6,7 +6,7 @@ const { validateAuth } = require("../middleware/auth");
 const { validateToken } = require("../configs/tokens");
 
 router.post("/register", (req, res) => {
-  const { email, name, password } = req.body;
+  const { email, name, password, phone } = req.body;
 
   User.findOne({ where: { email } }).then((userExist) => {
     if (userExist) {
@@ -17,6 +17,7 @@ router.post("/register", (req, res) => {
       email,
       name,
       password,
+      phone,
       isAdmin: false,
     })
       .then((user) => {
@@ -44,6 +45,7 @@ router.post("/login", (req, res) => {
         id: user.id,
         email: user.email,
         name: user.name,
+        phone: user.phone,
         isAdmin: user.isAdmin,
       };
       const token = generateToken(payload);
