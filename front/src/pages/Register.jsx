@@ -8,6 +8,7 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("+54");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function Register() {
       setError(false);
     }
 
-    if (name === "" || password === "" || email === "") {
+    if (name === "" || password === "" || email === "" || phone === "") {
       setError(true);
       return;
     } else setError(false);
@@ -34,6 +35,7 @@ export default function Register() {
       .post("http://localhost:3001/api/user/register", {
         email: email,
         name: name,
+        phone: phone,
         password: password,
       })
       .then((res) => {
@@ -81,6 +83,22 @@ export default function Register() {
             placeholder="Username"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="mb-4">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="username"
+          >
+            Número de telefono
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username"
+            type="text"
+            placeholder="+54 *******"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
           />
         </div>
         <div className="mb-6">
