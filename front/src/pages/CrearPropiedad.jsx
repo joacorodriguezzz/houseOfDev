@@ -171,6 +171,29 @@ export default function CrearPropiedad() {
               type="text"
               placeholder="m2"
             ></input>
+            <div class="w-full md:w-200/1 px-3 mb-6 md:mb-100">
+              <label
+                class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                for="grid-first-name"
+              >
+                Descripcion
+              </label>
+              <input
+                class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                id="grid-first-name"
+                type="text"
+                placeholder="Proporcione una descripcion"
+              ></input>
+            </div>
+            <div className="flex items-center justify-between">
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit"
+                padding="50px"
+              >
+                <a>Publicar</a>
+              </button>
+            </div>
           </div>
         </div>
       </form>
