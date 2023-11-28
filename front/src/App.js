@@ -44,7 +44,6 @@ function App() {
             <Route path="/admin" element={<h1>JOACO ES ADMIN</h1>} />
             <Route path="/crear-propiedad" element={<CrearPropiedad />} />
             <Route path="/prueba" element={<FilterList />} />
-
             <Route path="/propiedades/:id" element={<SingleView />} />
           </>
         ) : (
