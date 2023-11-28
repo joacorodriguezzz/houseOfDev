@@ -14,19 +14,18 @@ function PropertiesContainer() {
   }, []);
 
   const gridContainerStyle = {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    gap: "50px",
-    padding: "20px",
-    marginTop: "80px", // Ajusta según la altura de tu navbar
+    marginTop: "25%",
   };
 
   return (
-    <div className="bg-gradient-to-bl from-blue-50 to-violet-50 flex items-center justify-center lg:h-screen">
-      <div className="container mx-auto mx-auto p-4">
+    <div className="bg-[#F7F3EE] flex items-center justify-center lg:h-screen min-h-[100vh] w-[100%] ">
+      <div
+        style={gridContainerStyle}
+        className="container mx-auto mx-auto p-4 "
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
           {properties.map((property, index) => (
-            <div key={index} className="bg-white rounded-lg border p-4">
+            <div key={index} className="bg-[#F9F9F9] rounded-lg border p-4">
               <img
                 src={property.img}
                 alt={`Property ${index + 1}`}
