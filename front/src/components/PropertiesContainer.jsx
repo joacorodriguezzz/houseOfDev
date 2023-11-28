@@ -48,6 +48,7 @@ function PropertiesContainer() {
           </Link>
           <div>
             <h3>{property.barrio}</h3>
+            <h4>{property.ubicacion}</h4>
           </div>
         </div>
       ))}
