@@ -38,6 +38,7 @@ router.post("/crearPropiedad", (req, res) => {
     baños,
     metrosCuadrados,
     descripcion,
+    img,
   } = req.body;
 
   Properties.create({
@@ -49,6 +50,7 @@ router.post("/crearPropiedad", (req, res) => {
     baños,
     metrosCuadrados,
     descripcion,
+    img,
   })
     .then((newPropiedad) => {
       res.status(201).send(newPropiedad);
