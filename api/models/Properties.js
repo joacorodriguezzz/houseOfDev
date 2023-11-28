@@ -21,12 +21,21 @@ Properties.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    img: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     baños: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
     metrosCuadrados: {
       type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+
+    descripcion: {
+      type: DataTypes.TEXT,
       allowNull: false,
     },
   },
