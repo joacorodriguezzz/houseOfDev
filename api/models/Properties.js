@@ -23,7 +23,7 @@ Properties.init(
     },
     img: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     baños: {
       type: DataTypes.INTEGER,

@@ -98,7 +98,10 @@ export default function Register() {
             type="text"
             placeholder="+54 *******"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => {
+              const sanitizedValue = e.target.value.replace(/[^0-9+]/g, "");
+              setPhone(sanitizedValue);
+            }}
           />
         </div>
         <div className="mb-6">

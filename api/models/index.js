@@ -1,3 +1,4 @@
 const Users = require("./User");
 const Properties = require("./Properties");
-module.exports = { Users, Properties };
+const Citas = require("./Citas");
+module.exports = { Users, Properties, Citas };
