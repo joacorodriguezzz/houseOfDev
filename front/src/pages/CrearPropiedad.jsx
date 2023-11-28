@@ -19,7 +19,7 @@ export default function CrearPropiedad() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/api/properties/propiedades", {
+      .post("http://localhost:3001/api/properties/crearPropiedad", {
         cantidadAmbientes: parseInt(cantidadAmbientes),
         ubicacion,
         barrio,
@@ -34,9 +34,7 @@ export default function CrearPropiedad() {
         alert("propiedad creada correctamente");
         navigate("/");
       })
-      .catch((err) =>
-        alert("Ya existe una propiedad con estas caracteristicas.")
-      );
+      .catch((err) => console.log("ERROR", err));
   };
 
   return (
