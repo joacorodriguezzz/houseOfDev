@@ -28,7 +28,6 @@ function NavBar() {
   const user = useSelector((state) => state.user);
   return (
     <nav
-      style={navbarStyle}
       className={user.email && user.isAdmin ? "bg-[#0000ff]" : "bg-[#FE4236]"}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
