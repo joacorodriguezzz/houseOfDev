@@ -12,7 +12,7 @@ export default function CrearPropiedad() {
   const [precio, setPrecio] = useState("");
   const [baños, setBaños] = useState("");
   const [metrosCuadrados, setMetrosCuadrados] = useState("");
-
+  const [img, setImg] = useState("");
   const [bañosSeleccionados, setBañosSeleccionados] = useState("1");
   const [descripcion, setDescripcion] = useState("");
   const handleSubmit = (e) => {
@@ -29,6 +29,7 @@ export default function CrearPropiedad() {
         ambientes: parseInt(cantidadAmbientes),
         baños: parseInt(bañosSeleccionados),
         descripcion,
+        img,
       })
       .then((res) => {
         alert("propiedad creada correctamente");
@@ -188,8 +189,6 @@ export default function CrearPropiedad() {
               <label
                 class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
                 for="grid-first-name"
-                value={descripcion}
-                onChange={(e) => setDescripcion(e.target.value)}
               >
                 Descripcion
               </label>
@@ -198,7 +197,25 @@ export default function CrearPropiedad() {
                 id="grid-first-name"
                 type="text"
                 placeholder="Proporcione una descripcion"
+                value={descripcion}
+                onChange={(e) => setDescripcion(e.target.value)}
               ></input>
+              <div className="w-full md:w-200/1 px-3 mb-6 md:mb-100">
+                <label
+                  className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  htmlFor="grid-image-url"
+                >
+                  URL de la Imagen
+                </label>
+                <input
+                  className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                  id="grid-image-url"
+                  type="text"
+                  placeholder="Inserte la URL de la imagen"
+                  value={img}
+                  onChange={(e) => setImg(e.target.value)}
+                ></input>
+              </div>
             </div>
             <div className="flex items-center justify-between">
               <button
