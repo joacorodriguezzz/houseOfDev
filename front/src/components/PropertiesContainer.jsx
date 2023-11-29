@@ -14,7 +14,7 @@ function PropertiesContainer() {
   }, []);
 
   const gridContainerStyle = {
-    marginTop: "25%",
+    marginTop: "65%",
   };
 
   return (
