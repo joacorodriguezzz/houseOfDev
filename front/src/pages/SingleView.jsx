@@ -65,18 +65,78 @@ function SingleView() {
 
   return (
     <div>
-      <h1>hola</h1>
-      {property ? (
-        <>
-          <h2>Detalles de la Propiedad</h2>
-          <p>ID: {property.id}</p>
-          <p>Ubicación: {property.ubicacion}</p>
-          <p>Descripcion: {property.descripcion}</p>
-          <img src={property.img} alt="" />
-        </>
-      ) : (
-        <p>Cargando...</p>
-      )}
+      <div>
+        <div class="px-4 sm:px-0">
+          <h3 class="text-base font-semibold leading-7 text-gray-900">
+            Informacion de la propiedad
+          </h3>
+          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
+            {property.descripcion}
+          </p>
+        </div>
+        <div class="mt-6 border-t border-gray-100">
+          <dl class="divide-y divide-gray-100">
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900"></dt>
+              <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                <img src={property.img} alt="" />
+              </dd>
+              <dt class="text-sm font-medium leading-6 text-gray-900">
+                Ubicacion
+              </dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {property.ubicacion}
+              </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">
+                Metros cuadrados
+              </dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {property.metrosCuadrados}
+              </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">
+                Ambientes
+              </dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {property.cantidadAmbientes}
+              </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">Baños</dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {property.baños}
+              </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+              <dt class="text-sm font-medium leading-6 text-gray-900">
+                Precio
+              </dt>
+              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {property.precio}
+              </dd>
+            </div>
+            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"></div>
+          </dl>
+        </div>
+      </div>{" "}
+      <button
+        type="button"
+        class="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500"
+      >
+        <svg
+          class="w-4 h-4"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 18 18"
+        >
+          <path d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
+        </svg>
+        <span class="sr-only">Icon description</span>
+      </button>
       <div class="">
         <p class="mt-8 font-serif text-xl font-bold text-blue-900">
           Seleccione una fecha
@@ -109,7 +169,6 @@ function SingleView() {
           />
         </div>
       </div>
-
       <div class="">
         <p class="mt-8 font-serif text-xl font-bold text-blue-900">
           Seleccione un horario
@@ -181,14 +240,13 @@ function SingleView() {
           </button>
         </div>
       </div>
-
       <button
         class="mt-8 w-56 rounded-full border-8 border-red-500 bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:translate-y-1"
         onClick={handleAgend}
       >
         Agendar
       </button>
-    </div>
+    </div> ///////////////
   );
 }
 

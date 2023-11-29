@@ -57,6 +57,7 @@ function App() {
             <Route path="/logIn" element={<Login />} />
             <Route path="/prueba" element={<FilterList />} />
             <Route path="/propiedades/:id" element={<SingleView />} />
+            <Route path="/search" element={<Search />} />
           </>
         )}
         {!user.email && <Route path="/" element={<Home />} />}
