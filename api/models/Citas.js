@@ -5,11 +5,11 @@ class Citas extends Model {}
 
 Citas.init(
   {
-    horaCita: {
+    hora: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    diaCita: {
+    fecha: {
       type: DataTypes.STRING,
       allowNull: false,
     },
