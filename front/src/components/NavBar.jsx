@@ -18,11 +18,14 @@ function NavBar() {
         dispatch(setUser({ id: null, email: null, name: null }));
       });
   };
-
+  const navBarStyle = {
+    marginBottom: "55%",
+  };
   const user = useSelector((state) => state.user);
   return (
     <nav
       className={user.email && user.isAdmin ? "bg-[#0000ff]" : "bg-[#FE4236]"}
+      style={navBarStyle}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
@@ -63,6 +66,14 @@ function NavBar() {
               <>
                 <li>
                   <Link
+                    to="/search"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Buscar
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     to="/register"
                     className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
@@ -87,6 +98,14 @@ function NavBar() {
                     className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   >
                     Usuarios
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/search"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Buscar
                   </Link>
                 </li>
                 <li>

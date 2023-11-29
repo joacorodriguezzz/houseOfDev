@@ -13,9 +13,7 @@ function PropertiesContainer() {
       });
   }, []);
 
-  const gridContainerStyle = {
-    marginTop: "25%",
-  };
+  const gridContainerStyle = {};
 
   return (
     <div className="bg-[#FDFDFD] flex items-center justify-center lg:h-screen min-h-[100vh] w-[100%] ">

@@ -14,6 +14,8 @@ import Profile from "./pages/Profile";
 import CrearPropiedad from "./pages/CrearPropiedad";
 import FilterList from "./components/filterList";
 import SingleView from "./pages/SingleView";
+import Search from "./pages/Search";
+
 function App() {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -45,6 +47,7 @@ function App() {
             <Route path="/crear-propiedad" element={<CrearPropiedad />} />
             <Route path="/prueba" element={<FilterList />} />
             <Route path="/propiedades/:id" element={<SingleView />} />
+            <Route path="/search" element={<Search />} />
           </>
         ) : (
           <>
