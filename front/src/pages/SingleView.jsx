@@ -1,13 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 function SingleView() {
   const { id } = useParams();
   const [property, setProperty] = useState(null);
+  const [hora, setHora] = useState(null);
+  const [fecha, setFecha] = useState(null);
+  const user = useSelector((state) => state.user);
+
+  const handleAgend = () => {
+    if (hora && fecha && user.id) {
+      const citaData = {
+        hora: hora,
+        fecha: fecha,
+        userId: user.id,
+        edificioId: id,
+      };
+      console.log(hora);
+      console.log(fecha);
+
+      axios
+        .post(`http://localhost:3001/api/citas/reservar`, citaData)
+        .then((response) => {
+          alert("Cita creada con exito!", response);
+        })
+        .catch((error) => {
+          alert("Fecha y horario no disponible!");
+          console.error("Error al agendar la cita:", error);
+        });
+    } else {
+      console.log("Seleccione fecha y horario antes de agendar");
+    }
+  };
 
   useEffect(() => {
-    // Hacer una solicitud para obtener detalles de la propiedad por ID
     axios
       .get(`http://localhost:3001/api/properties/propiedades/${id}`)
       .then((response) => {
@@ -18,6 +46,22 @@ function SingleView() {
         console.log("Error al obtener detalles de la propiedad", error);
       });
   }, [id]);
+
+  const handleFechaChange = (e) => {
+    let sanitizedInput = e.target.value.replace(/[^0-9]/g, "");
+
+    if (sanitizedInput.length >= 2) {
+      sanitizedInput = `${sanitizedInput.slice(0, 2)}/${sanitizedInput.slice(
+        2
+      )}`;
+    }
+
+    setFecha(sanitizedInput);
+  };
+
+  const handleHoraClick = (horaElegida) => {
+    setHora(horaElegida);
+  };
 
   return (
     <div>
@@ -59,7 +103,9 @@ function SingleView() {
             autofocus="autofocus"
             type="text"
             class="datepicker-input block w-full rounded-lg border border-red-300 bg-red-50 p-2.5 pl-10 text-red-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
-            placeholder="Seleccione una fecha"
+            placeholder="dd/mm"
+            value={fecha}
+            onChange={handleFechaChange}
           />
         </div>
       </div>
@@ -73,6 +119,7 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("09:00")}
           >
             09:00
           </button>
@@ -80,6 +127,7 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("11:00")}
           >
             11:00
           </button>
@@ -87,6 +135,7 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("12:00")}
           >
             12:00
           </button>
@@ -94,6 +143,7 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("13:00")}
           >
             13:00
           </button>
@@ -101,6 +151,7 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("16:00")}
           >
             16:00
           </button>
@@ -108,6 +159,7 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("17:00")}
           >
             17:00
           </button>
@@ -115,6 +167,7 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("18:00")}
           >
             18:00
           </button>
@@ -122,14 +175,18 @@ function SingleView() {
           <button
             id="btn"
             class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+            onClick={() => handleHoraClick("19:00")}
           >
             19:00
           </button>
         </div>
       </div>
 
-      <button class="mt-8 w-56 rounded-full border-8 border-red-500 bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:translate-y-1">
-        Book Now
+      <button
+        class="mt-8 w-56 rounded-full border-8 border-red-500 bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:translate-y-1"
+        onClick={handleAgend}
+      >
+        Agendar
       </button>
     </div>
   );

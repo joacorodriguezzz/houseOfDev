@@ -17,7 +17,6 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Verifica si las contraseñas coinciden antes de realizar la llamada a la API
     if (password !== confirmPassword) {
       setError(true);
       alert("Las contraseñas no coinciden");

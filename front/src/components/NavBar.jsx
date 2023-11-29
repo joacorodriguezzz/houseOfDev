@@ -18,17 +18,14 @@ function NavBar() {
         dispatch(setUser({ id: null, email: null, name: null }));
       });
   };
-
-  const navbarStyle = {
-    zIndex: 1, // Ajusta según sea necesario
-    position: "fixed",
-    width: "100%",
+  const navBarStyle = {
+    marginBottom: "55%",
   };
-
   const user = useSelector((state) => state.user);
   return (
     <nav
       className={user.email && user.isAdmin ? "bg-[#0000ff]" : "bg-[#FE4236]"}
+      style={navBarStyle}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
