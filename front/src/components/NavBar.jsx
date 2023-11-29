@@ -19,12 +19,6 @@ function NavBar() {
       });
   };
 
-  const navbarStyle = {
-    zIndex: 1, // Ajusta según sea necesario
-    position: "fixed",
-    width: "100%",
-  };
-
   const user = useSelector((state) => state.user);
   return (
     <nav
