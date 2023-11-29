@@ -16,11 +16,8 @@ function PropertiesContainer() {
   const gridContainerStyle = {};
 
   return (
-    <div className="bg-[#FDFDFD] flex items-center justify-center lg:h-screen min-h-[100vh] w-[100%] ">
-      <div
-        style={gridContainerStyle}
-        className="container mx-auto mx-auto p-4 "
-      >
+    <div className="bg-[#F7F3EE] flex items-center justify-center lg:h-screen min-h-[100vh] w-[100%] ">
+      <div className="container mx-auto mx-auto p-4 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
           {properties.map((property, index) => (
             <div key={index} className="bg-[#F9F9F9] rounded-lg border p-4">

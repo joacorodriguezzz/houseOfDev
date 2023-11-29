@@ -19,7 +19,7 @@ function NavBar() {
       });
   };
   const navBarStyle = {
-    marginBottom: "55%",
+    marginBottom: "10%",
   };
   const user = useSelector((state) => state.user);
   return (

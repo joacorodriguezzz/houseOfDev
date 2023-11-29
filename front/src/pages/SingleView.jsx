@@ -68,10 +68,10 @@ function SingleView() {
       <h1>hola</h1>
       {property ? (
         <>
-          <h2>Detalles de la Propiedad</h2>
           <p>ID: {property.id}</p>
           <p>Ubicación: {property.ubicacion}</p>
-          <p>Descripcion: {property.descripcion}</p>
+          <p>Descripcion: {property.descripcion}</p>´
+          <p> Baños: {property.baños}</p>
           <img src={property.img} alt="" />
         </>
       ) : (
