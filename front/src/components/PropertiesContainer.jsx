@@ -15,7 +15,7 @@ function PropertiesContainer() {
 
   const gridContainerStyle = {};
   return (
-    <div className="bg-[#FDFDFD] flex items-center justify-center lg:h-screen min-h-[100vh] w-[100%] ">
+    <div className="bg-[#FDFDFD] flex items-center justify-center lg:h-screen min-h-[100vh] w-[100%]  z-0">
       <div
         style={gridContainerStyle}
         className="container mx-auto mx-auto p-4 "
