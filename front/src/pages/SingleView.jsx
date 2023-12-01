@@ -115,6 +115,7 @@ function SingleView() {
                 Precio
               </dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+                {property?.precio}
                 {property?.precio} USD
               </dd>
             </div>
@@ -161,7 +162,7 @@ function SingleView() {
             datepicker=""
             datepicker-orientation="bottom"
             autofocus="autofocus"
-            type="text"
+            type="date"
             class="datepicker-input block w-full rounded-lg border border-red-300 bg-red-50 p-2.5 pl-10 text-red-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
             placeholder="dd/mm"
             value={fecha}
