@@ -21,11 +21,15 @@ function NavBar() {
   };
   const navBarStyle = {
     marginBottom: "10%",
+    position: "fixed",
+    width: "100%",
   };
   const user = useSelector((state) => state.user);
   return (
     <nav
-      className={user.email && user.isAdmin ? "bg-[#0000ff]" : "bg-[#FE4236]"}
+      className={
+        user.email && user.isAdmin ? "bg-[#0000ff] z-10" : "bg-[#FE4236] z-10"
+      }
       style={navBarStyle}
     >
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
