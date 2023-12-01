@@ -67,7 +67,7 @@ router.post("/logout", (req, res) => {
 
 router.get("/user/profile", (req, res) => {});
 
-router.put("/user/profile", (req, res) => {});
+router.put("/user/profile", validateAuth, (req, res) => {});
 
 router.get("/user/favoritos", (req, res) => {});
 
