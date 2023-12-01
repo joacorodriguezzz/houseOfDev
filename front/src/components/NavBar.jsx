@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { setUser } from "../state/user";
 import { useDispatch, useSelector } from "react-redux";
+import HOD from "../assets/HOD.png";
 
 function NavBar() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function NavBar() {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            HOD
+            <img src={HOD} alt="" style={{ width: "10vh", height: "auto" }} />
           </span>
         </Link>
         <button
