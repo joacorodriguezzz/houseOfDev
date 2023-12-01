@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "../state/user";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,9 +31,15 @@ export default function Login() {
         dispatch(setUser(data));
         navigate("/");
       })
-
       .catch(({ response }) => {
-        alert("Los datos proporcionados son invalidos");
+        toast.error("Los datos proporcionados son inválidos", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
       });
   };
   return (

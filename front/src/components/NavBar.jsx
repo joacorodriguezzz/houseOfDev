@@ -20,9 +20,7 @@ function NavBar() {
       });
   };
   const navBarStyle = {
-    marginBottom: "10%",
-    position: "fixed",
-    width: "100%",
+    marginBottom: "2%",
   };
   const user = useSelector((state) => state.user);
   return (

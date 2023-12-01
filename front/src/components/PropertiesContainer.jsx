@@ -8,6 +8,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 function PropertiesContainer() {
   const [properties, setProperties] = useState([]);
+  const [sortBy, setSortBy] = useState(null);
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -18,9 +19,44 @@ function PropertiesContainer() {
       });
   }, []);
 
+  const handleSortBy = (key) => {
+    if (sortBy === key) {
+      // Si ya estamos ordenando por la misma clave, invertimos el orden
+      setProperties([...properties.reverse()]);
+    } else {
+      // Ordenamos por la clave especificada
+      const sortedProperties = [...properties].sort((a, b) =>
+        key === "cantidadAmbientes"
+          ? parseFloat(a[key]) - parseFloat(b[key])
+          : a[key] > b[key]
+          ? 1
+          : -1
+      );
+      setProperties(sortedProperties);
+    }
+    // Actualizamos la clave de orden actual
+    setSortBy(key);
+  };
+
+  const propertiesContainerStyle = {
+    backgroundColor: "#F7F3EE",
+  };
+
   return (
-    <div className="bg-[#F7F3EE] flex items-center justify-center lg:h-screen min-h-[100vh] w-[100%]">
+    <div className="min-h-[100vh] w-[100%]">
       <div className="container mx-auto p-4">
+        <div className="mb-4">
+          <label className="mr-2">Ordenar por:</label>
+          <select
+            className="p-2 border border-gray-300 rounded"
+            onChange={(e) => handleSortBy(e.target.value)}
+          >
+            <option value="">Seleccionar</option>
+            <option value="precio">Precio</option>
+            <option value="cantidadAmbientes">Ambientes</option>
+            {/* Agrega más opciones según las claves que desees ordenar */}
+          </select>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
           {properties.map((property, index) => (
             <div
