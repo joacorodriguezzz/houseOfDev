@@ -15,6 +15,7 @@ import CrearPropiedad from "./pages/CrearPropiedad";
 import FilterList from "./components/filterList";
 import SingleView from "./pages/SingleView";
 import Search from "./pages/Search";
+import Prueba from "./pages/Prueba";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -45,7 +46,7 @@ function App() {
             <Route path="/logIn" element={<Login />} />
             <Route path="/admin" element={<h1>JOACO ES ADMIN</h1>} />
             <Route path="/crear-propiedad" element={<CrearPropiedad />} />
-            <Route path="/prueba" element={<FilterList />} />
+            <Route path="/prueba" element={<Prueba />} />
             <Route path="/propiedades/:id" element={<SingleView />} />
             <Route path="/search" element={<Search />} />
           </>
