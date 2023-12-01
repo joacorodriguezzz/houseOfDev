@@ -10,7 +10,7 @@ export default function Profile() {
   const user = useSelector((state) => state.user);
 
   return (
-    <div className="max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5 profile-container">
+    <div className="bg-[#FDF6EE] max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5 profile-container">
       <img
         className="w-32 h-32 rounded-full mx-auto"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwaShegt_FPYXgalLHfcw8k7n7srebcXl86rDDv6_K3RljyjHPySoKEoHFZPsmsb66lK0&usqp=CAU"
@@ -21,7 +21,11 @@ export default function Profile() {
 
       <div className="mt-5">
         <h3 className="text-xl font-semibold">Email</h3>
-        <p className="text-gray-600 mt-2">{user.email}</p>
+        <input
+          className="text-gray-600 mt-2"
+          defaultValue={user.email}
+          disabled
+        />
         <h3 className="text-xl font-semibold">Teléfono</h3>
         <p className="text-gray-600 mt-2">+{user.phone}</p>
       </div>

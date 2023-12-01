@@ -71,7 +71,7 @@ function SingleView() {
             Informacion de la propiedad
           </h3>
           <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-            {property.descripcion}
+            {property?.descripcion}
           </p>
         </div>
         <div class="mt-6 border-t border-gray-100">
@@ -79,13 +79,13 @@ function SingleView() {
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-sm font-medium leading-6 text-gray-900"></dt>
               <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                <img src={property.img} alt="" />
+                <img src={property?.img} alt="" />
               </dd>
               <dt class="text-sm font-medium leading-6 text-gray-900">
                 Ubicacion
               </dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property.ubicacion}
+                {property?.ubicacion}
               </dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -93,7 +93,7 @@ function SingleView() {
                 Metros cuadrados
               </dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property.metrosCuadrados}
+                {property?.metrosCuadrados}
               </dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -101,13 +101,13 @@ function SingleView() {
                 Ambientes
               </dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property.cantidadAmbientes}
+                {property?.cantidadAmbientes}
               </dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
               <dt class="text-sm font-medium leading-6 text-gray-900">Baños</dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property.baños}
+                {property?.baños}
               </dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -115,7 +115,7 @@ function SingleView() {
                 Precio
               </dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property.precio}
+                {property?.precio}
               </dd>
             </div>
             <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"></div>
@@ -161,7 +161,7 @@ function SingleView() {
             datepicker=""
             datepicker-orientation="bottom"
             autofocus="autofocus"
-            type="text"
+            type="date"
             class="datepicker-input block w-full rounded-lg border border-red-300 bg-red-50 p-2.5 pl-10 text-red-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
             placeholder="dd/mm"
             value={fecha}

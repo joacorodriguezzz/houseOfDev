@@ -19,7 +19,7 @@ function NavBar() {
       });
   };
   const navBarStyle = {
-    marginBottom: "0%",
+    marginBottom: "10%",
   };
   const user = useSelector((state) => state.user);
   return (
@@ -64,14 +64,6 @@ function NavBar() {
           <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700">
             {!user.email ? (
               <>
-                <li>
-                  <Link
-                    to="/search"
-                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                  >
-                    Buscar
-                  </Link>
-                </li>
                 <li>
                   <Link
                     to="/register"

@@ -7,9 +7,7 @@ const FilterByPrice = ({ products, onFilterChange }) => {
   const [maxPrice, setMaxPrice] = useState("");
 
   const handleFilterChange = () => {
-    // Validar que ambos campos sean números antes de aplicar el filtro
     if (!isNaN(minPrice) && !isNaN(maxPrice)) {
-      // Filtrar productos y pasar la nueva lista al componente padre
       const filteredProducts = products.filter(
         (product) =>
           product.price >= parseFloat(minPrice) &&
