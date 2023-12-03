@@ -38,7 +38,6 @@ export default function Register() {
         password: password,
       })
       .then((res) => {
-        // dispatch
         dispatch(setUser({ id: res.data.id, name: res.data.name }));
         alert("Registro exitoso");
         navigate("/login");
