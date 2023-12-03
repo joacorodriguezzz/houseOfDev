@@ -5,11 +5,26 @@ import { useSelector } from "react-redux";
 import { FaDollarSign } from "react-icons/fa";
 import { FaBed } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 function PropertiesContainer() {
   const [properties, setProperties] = useState([]);
   const [sortBy, setSortBy] = useState(null);
   const user = useSelector((state) => state.user);
+
+  const handleDeleteProperty = (propertyId) => {
+    axios
+      .delete(`http://localhost:3001/api/properties/propiedades/${propertyId}`)
+      .then(() => {
+        const updatedProperties = properties.filter(
+          (property) => property.id !== propertyId
+        );
+        setProperties(updatedProperties);
+      })
+      .catch((error) => {
+        console.error("Error al eliminar propiedad:", error);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -21,10 +36,8 @@ function PropertiesContainer() {
 
   const handleSortBy = (key) => {
     if (sortBy === key) {
-      // Si ya estamos ordenando por la misma clave, invertimos el orden
       setProperties([...properties.reverse()]);
     } else {
-      // Ordenamos por la clave especificada
       const sortedProperties = [...properties].sort((a, b) =>
         key === "cantidadAmbientes"
           ? parseFloat(a[key]) - parseFloat(b[key])
@@ -34,7 +47,6 @@ function PropertiesContainer() {
       );
       setProperties(sortedProperties);
     }
-    // Actualizamos la clave de orden actual
     setSortBy(key);
   };
 
@@ -54,7 +66,6 @@ function PropertiesContainer() {
             <option value="">Seleccionar</option>
             <option value="precio">Precio</option>
             <option value="cantidadAmbientes">Ambientes</option>
-            {/* Agrega más opciones según las claves que desees ordenar */}
           </select>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4">
@@ -95,6 +106,14 @@ function PropertiesContainer() {
                   <FaMapMarkerAlt className="mr-2" />
                   <p>{property.barrio}</p>
                 </div>
+                {user.isAdmin && (
+                  <button
+                    className="text-red-500 hover:text-red-700 focus:outline-none"
+                    onClick={() => handleDeleteProperty(property.id)}
+                  >
+                    <FaTrash />
+                  </button>
+                )}
               </div>
             </div>
           ))}
