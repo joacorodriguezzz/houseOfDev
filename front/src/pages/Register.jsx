@@ -48,7 +48,7 @@ export default function Register() {
   return (
     <div className="mx-auto max-w-md mt-8">
       <form
-        className="bg-[#fdf6ee] shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-[#F7F3EE] shadow-xl rounded px-8 pt-6 pb-8 mb-4"
         onSubmit={handleSubmit}
       >
         <div className="mb-4">
