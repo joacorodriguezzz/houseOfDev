@@ -26,7 +26,6 @@ const UserList = () => {
       console.error("Error al eliminar usuario:", error);
     }
   };
-
   return (
     <div className="max-w-md mx-auto mt-8 shadow-md p-6">
       <ul className="max-w-xs flex flex-col divide-y divide-gray-200 dark:divide-gray-700">

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Citas, User, Properties } = require("../models/");
-
+const transporter = require("../configs/mailer");
 router.post("/reservar", async (req, res) => {
   try {
     const { hora, fecha, userId, edificioId } = req.body;
@@ -28,6 +28,20 @@ router.post("/reservar", async (req, res) => {
 
     nuevaCita.setUser(user);
     nuevaCita.setEdificio(edificio);
+
+    await transporter.sendMail(
+      {
+        from: '"Inmobiliaria HOD 🏠" <inmobiliariaHOD@gmail.com>',
+        to: user.email,
+        subject: "Hello ✔",
+        html: `<p> ¡Hola, ${user.name}! Su cita para el ${fecha} a las ${hora} ha sido confirmada con éxito.</p>`, // html body
+      },
+      (error) => {
+        if (error) {
+          console.log(error);
+        }
+      }
+    );
 
     res
       .status(201)

@@ -28,7 +28,7 @@ function SingleView() {
         })
         .catch((error) => {
           alert("Fecha y horario no disponible!");
-          console.error("Error al agendar la cita:", error);
+          console.error("Error al agendar la cita:", error.response);
         });
     } else {
       console.log("Seleccione fecha y horario antes de agendar");
@@ -48,15 +48,8 @@ function SingleView() {
   }, [id]);
 
   const handleFechaChange = (e) => {
-    let sanitizedInput = e.target.value.replace(/[^0-9]/g, "");
-
-    if (sanitizedInput.length >= 2) {
-      sanitizedInput = `${sanitizedInput.slice(0, 2)}/${sanitizedInput.slice(
-        2
-      )}`;
-    }
-
-    setFecha(sanitizedInput);
+    const inputValue = e.target.value;
+    setFecha(inputValue);
   };
 
   const handleHoraClick = (horaElegida) => {
@@ -115,7 +108,6 @@ function SingleView() {
                 Precio
               </dt>
               <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property?.precio}
                 {property?.precio} USD
               </dd>
             </div>
@@ -161,10 +153,11 @@ function SingleView() {
           <input
             datepicker=""
             datepicker-orientation="bottom"
-            autofocus="autofocus"
+            autoFocus="autofocus"
             type="date"
+            min="2023-12-01"
+            max="2023-12-31"
             class="datepicker-input block w-full rounded-lg border border-red-300 bg-red-50 p-2.5 pl-10 text-red-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
-            placeholder="dd/mm"
             value={fecha}
             onChange={handleFechaChange}
           />

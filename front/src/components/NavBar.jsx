@@ -103,6 +103,7 @@ function NavBar() {
                     Usuarios
                   </Link>
                 </li>
+
                 <li>
                   <Link
                     to="/search"
