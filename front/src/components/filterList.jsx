@@ -1,5 +1,3 @@
-// FilterByPrice.jsx
-
 import React, { useState } from "react";
 
 const FilterByPrice = ({ products, onFilterChange }) => {

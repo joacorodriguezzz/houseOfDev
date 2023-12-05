@@ -34,7 +34,7 @@ router.post("/reservar", async (req, res) => {
         from: '"Inmobiliaria HOD 🏠" <inmobiliariaHOD@gmail.com>',
         to: user.email,
         subject: "Hello ✔",
-        html: `<p> ¡Hola, ${user.name}! Su cita para el ${fecha} a las ${hora} ha sido confirmada con éxito.</p>`, // html body
+        html: `<p> ¡Hola, ${user.name}! Su cita para el ${fecha} a las ${hora} ha sido confirmada con éxito.</p>`,
       },
       (error) => {
         if (error) {
@@ -52,7 +52,7 @@ router.post("/reservar", async (req, res) => {
   }
 });
 
-router.get("/", async (req, res) => {
+router.get("/citas-lista", async (req, res) => {
   try {
     citas = await Citas.findAll({
       include: [{ model: User }, { model: Properties }],

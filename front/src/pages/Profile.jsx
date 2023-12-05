@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../state/user";
 import { useSelector } from "react-redux";
@@ -8,6 +8,7 @@ export default function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const [name, setName] = useState("");
 
   return (
     <div className="bg-[#FDF6EE] max-w-lg mx-auto my-10 bg-white rounded-lg shadow-md p-5 profile-container">
