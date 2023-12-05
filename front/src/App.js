@@ -17,6 +17,7 @@ import SingleView from "./pages/SingleView";
 import Search from "./pages/Search";
 import Prueba from "./pages/Prueba";
 import UserList from "./pages/UserList";
+import CitasLista from "./pages/CitasLista";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -47,6 +48,7 @@ function App() {
             <Route path="/logIn" element={<Login />} />
             <Route path="/admin" element={<h1>JOACO ES ADMIN</h1>} />
             <Route path="/crear-propiedad" element={<CrearPropiedad />} />
+            <Route path="/citas-lista" element={<CitasLista />} />
             <Route path="/usuarios-lista" element={<UserList />} />
             <Route path="/prueba" element={<Prueba />} />
             <Route path="/propiedades/:id" element={<SingleView />} />

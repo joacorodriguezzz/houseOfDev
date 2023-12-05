@@ -65,15 +65,23 @@ router.post("/logout", (req, res) => {
   res.sendStatus(204);
 });
 
-router.get("/user/profile", (req, res) => {});
+router.put("/user/profile", validateAuth, (req, res) => {
+  const userId = req.user.id;
+  const { name } = req.body;
+  console.log(name);
 
-router.put("/user/profile", validateAuth, (req, res) => {});
-
-router.get("/user/favoritos", (req, res) => {});
-
-router.post("/user/favoritos", (req, res) => {});
-
-router.delete("/user/favoritos/:propiedadesId", (req, res) => {});
+  User.findByPk(userId)
+    .then((user) => {
+      if (!user) {
+        return res.status(400);
+      }
+      user.name = name;
+      return user.save();
+    })
+    .then((updateUser) => {
+      res.status(200).json(updateUser);
+    });
+});
 
 router.use("/", function (req, res) {
   res.sendStatus(404);

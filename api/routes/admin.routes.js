@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Properties = require("../models/Properties");
+const Citas = require("../models/Citas");
 
 router.post("/register", (req, res) => {
   const { email, name, password, phone } = req.body;
@@ -63,23 +64,25 @@ router.delete("/users/:id", (req, res) => {
     });
 });
 
-router.put("/users/:id", (req, res) => {
-  const userId = req.params.id;
-  const { email, name, phone } = req.body;
+router.delete("/citas/:id", (req, res) => {
+  const citaId = req.params.id;
 
-  User.update(
-    req.body,
-    {
-      where: {
-        id: userId,
-      },
-      returning: true,
-    }.then(([affectedRows, updated]) => {
-      const user = updated[0];
-      res.send(user);
+  Citas.findByPk(citaId)
+    .then((cita) => {
+      if (!cita) {
+        return res.status(404).send("Cita no encontrada");
+      }
+      return Citas.destroy({ where: { id: citaId } });
     })
-  );
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch((error) => {
+      console.log("Error al eliminar cita", error);
+      res.status(500).json({ error: "Error al eliminar la cita" });
+    });
 });
+
 /*
 router.put("/:urlTitle", (req, res, next) => {
   Pages.update(req.body, {
