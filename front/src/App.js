@@ -37,7 +37,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-[#F7F3EE] w-[100%] min-h-[100vh] ">
+    <div className="bg-[#f9f9f9] w-[100%] min-h-[100vh] ">
       <NavBar />
 
       <Routes>

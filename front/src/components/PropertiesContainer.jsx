@@ -45,7 +45,7 @@ function PropertiesContainer() {
   };
 
   return (
-    <div className="min-h-[100vh] w-[100%]">
+    <div className="min-h-[100vh] w-[100%] bg-[#f9f9f9]">
       <div className="container mx-auto p-4">
         <div className="mb-4">
           <div className="mb-3 xl:w-96">
@@ -80,7 +80,7 @@ function PropertiesContainer() {
             .map((property, index) => (
               <div
                 key={index}
-                className="bg-[#fdf6ee] rounded-lg border p-4 transition-transform transform hover:shadow-md duration-300"
+                className="bg-[#f9f9f9] rounded-lg border p-4 transition-transform transform hover:shadow-md duration-300"
               >
                 <Link to={`/propiedades/${property.id}`}>
                   <img
