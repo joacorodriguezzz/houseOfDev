@@ -57,190 +57,226 @@ function SingleView() {
   };
 
   return (
-    <div>
-      <div>
-        <div class="px-4 sm:px-0">
-          <h3 class="text-base font-semibold leading-7 text-gray-900">
-            Informacion de la propiedad
-          </h3>
-          <p class="mt-1 max-w-2xl text-sm leading-6 text-gray-500">
-            {property?.descripcion}
-          </p>
-        </div>
-        <div class="mt-6 border-t border-gray-100">
-          <dl class="divide-y divide-gray-100">
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-sm font-medium leading-6 text-gray-900"></dt>
-              <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                <img src={property?.img} alt="" />
-              </dd>
-              <dt class="text-sm font-medium leading-6 text-gray-900">
-                Ubicacion
-              </dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property?.ubicacion}
-              </dd>
+    <div className="bg-[#f9f9f9]">
+      <section className="px-4 py-4 bg-[#f9f9f9] lg:px-20 lg:py-8">
+        <div className="flex flex-wrap lg:space-x-12">
+          <div className="lg:w-3/5">
+            <h1 className="mb-4 text-2xl font-medium text-center text-gray-900 lg:text-3xl">
+              {property?.ubicacion}
+            </h1>
+            <img src={property?.img} alt="property" className="w-full" />
+
+            <div className="mt-4">
+              <h4 className="text-2xl font-bold">Descripcion</h4>
+              <p className="my-4">{property?.descripcion}</p>
             </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-sm font-medium leading-6 text-gray-900">
-                Metros cuadrados
-              </dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property?.metrosCuadrados}
-              </dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-sm font-medium leading-6 text-gray-900">
-                Ambientes
-              </dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property?.cantidadAmbientes}
-              </dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-sm font-medium leading-6 text-gray-900">Baños</dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property?.baños}
-              </dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-              <dt class="text-sm font-medium leading-6 text-gray-900">
-                Precio
-              </dt>
-              <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-                {property?.precio} USD
-              </dd>
-            </div>
-            <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0"></div>
-          </dl>
-        </div>
-      </div>{" "}
-      <button
-        type="button"
-        class="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-blue-500"
-      >
-        <svg
-          class="w-4 h-4"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 18 18"
-        >
-          <path d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
-        </svg>
-        <span class="sr-only">Icon description</span>
-      </button>
-      <div class="">
-        <p class="mt-8 font-serif text-xl font-bold text-blue-900">
-          Seleccione una fecha
-        </p>
-        <div class="relative mt-4 w-56">
-          <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <svg
-              aria-hidden="true"
-              class="h-5 w-5 text-gray-500"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
           </div>
-          <input
-            datepicker=""
-            datepicker-orientation="bottom"
-            autoFocus="autofocus"
-            type="date"
-            min="2023-12-01"
-            max="2023-12-31"
-            class="datepicker-input block w-full rounded-lg border border-red-300 bg-red-50 p-2.5 pl-10 text-red-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
-            value={fecha}
-            onChange={handleFechaChange}
-          />
+
+          <div className="lg:w-1/3 lg:mt-4">
+            <h4 className="text-2xl font-bold text-center text-blue-700">
+              Detalles de la propiedad
+            </h4>
+            <div className="flex flex-wrap ">
+              <div className="w-full p-2 lg:w-1/2">
+                <div className="flex items-center h-full p-4 bg-blue-100 rounded">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 mr-3 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                  <span className="font-medium">{property?.baños} Baños</span>
+                </div>
+              </div>
+              <div className="w-full p-2 lg:w-1/2">
+                <div className="flex items-center h-full p-4 bg-blue-100 rounded">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 mr-3 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                  <span className="font-medium">
+                    {property?.cantidadAmbientes} Ambientes
+                  </span>
+                </div>
+              </div>
+
+              <div className="w-full p-2 lg:w-1/2">
+                <div className="flex items-center h-full p-4 bg-blue-100 rounded">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 mr-3 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                  <span className="font-medium">
+                    {property?.metrosCuadrados} M2
+                  </span>
+                </div>
+              </div>
+
+              <div className="w-full p-2 lg:w-1/2">
+                <div className="flex items-center h-full p-4 bg-blue-100 rounded">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6 mr-3 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="3"
+                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+                    />
+                  </svg>
+                  <span className="font-medium">{property?.precio} USD</span>
+                </div>
+              </div>
+              <div class="">
+                <p class="mt-8 font-serif text-xl font-bold text-blue-900">
+                  Seleccione una fecha
+                </p>
+                <div class="relative mt-4 w-56">
+                  <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                    <svg
+                      aria-hidden="true"
+                      class="h-5 w-5 text-gray-500"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    datepicker=""
+                    datepicker-orientation="bottom"
+                    autoFocus="autofocus"
+                    type="date"
+                    min="2023-12-01"
+                    max="2023-12-31"
+                    class="datepicker-input block w-full rounded-lg border border-red-300 bg-red-50 p-2.5 pl-10 text-red-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
+                    value={fecha}
+                    onChange={handleFechaChange}
+                  />
+                </div>
+              </div>
+              <div class="">
+                <p class="mt-8 font-serif text-xl font-bold text-blue-900">
+                  Seleccione un horario
+                </p>
+
+                <div class="mt-4 grid grid-cols-4 gap-2 lg:max-w-xl">
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("09:00")}
+                  >
+                    09:00
+                  </button>
+
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("11:00")}
+                  >
+                    11:00
+                  </button>
+
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("12:00")}
+                  >
+                    12:00
+                  </button>
+
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("13:00")}
+                  >
+                    13:00
+                  </button>
+
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("16:00")}
+                  >
+                    16:00
+                  </button>
+
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("17:00")}
+                  >
+                    17:00
+                  </button>
+
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("18:00")}
+                  >
+                    18:00
+                  </button>
+
+                  <button
+                    id="btn"
+                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    onClick={() => handleHoraClick("19:00")}
+                  >
+                    19:00
+                  </button>
+                  <button
+                    class="mt-8 w-56 rounded-full border-8 border-red-500 bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:translate-y-1"
+                    onClick={handleAgend}
+                  >
+                    Agendar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="">
-        <p class="mt-8 font-serif text-xl font-bold text-blue-900">
-          Seleccione un horario
-        </p>
+      </section>
+      <section></section>
 
-        <div class="mt-4 grid grid-cols-4 gap-2 lg:max-w-xl">
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("09:00")}
-          >
-            09:00
-          </button>
-
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("11:00")}
-          >
-            11:00
-          </button>
-
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("12:00")}
-          >
-            12:00
-          </button>
-
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("13:00")}
-          >
-            13:00
-          </button>
-
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("16:00")}
-          >
-            16:00
-          </button>
-
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("17:00")}
-          >
-            17:00
-          </button>
-
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("18:00")}
-          >
-            18:00
-          </button>
-
-          <button
-            id="btn"
-            class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
-            onClick={() => handleHoraClick("19:00")}
-          >
-            19:00
-          </button>
-        </div>
-      </div>
-      <button
-        class="mt-8 w-56 rounded-full border-8 border-red-500 bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:translate-y-1"
-        onClick={handleAgend}
-      >
-        Agendar
-      </button>
-    </div> ///////////////
+      <div className="lg:flex lg:justify-evenly"></div>
+    </div>
   );
 }
 
