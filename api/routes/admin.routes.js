@@ -5,7 +5,7 @@ const Properties = require("../models/Properties");
 const Citas = require("../models/Citas");
 
 router.post("/register", (req, res) => {
-  const { email, name, password, phone } = req.body;
+  const { email, name, password, lastName } = req.body;
 
   User.findOne({ where: { email } }).then((userExist) => {
     if (userExist) {
@@ -15,7 +15,7 @@ router.post("/register", (req, res) => {
     User.create({
       email,
       name,
-      phone,
+      lastName,
       password,
       isAdmin: true,
     })
