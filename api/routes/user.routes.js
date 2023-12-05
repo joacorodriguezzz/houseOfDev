@@ -6,7 +6,7 @@ const { validateAuth } = require("../middleware/auth");
 const { validateToken } = require("../configs/tokens");
 
 router.post("/register", (req, res) => {
-  const { email, name, password, phone } = req.body;
+  const { email, name, password, lastName } = req.body;
 
   User.findOne({ where: { email } }).then((userExist) => {
     if (userExist) {
@@ -17,7 +17,7 @@ router.post("/register", (req, res) => {
       email,
       name,
       password,
-      phone,
+      lastName,
       isAdmin: false,
     })
       .then((user) => {
@@ -25,7 +25,12 @@ router.post("/register", (req, res) => {
         res.status(201).send(user);
       })
       .catch((error) => {
-        console.error("Error al crear usuario:", error);
+        console.error(
+          "Error al crear usuario:",
+          error,
+          "APELLIDOOOO",
+          lastName
+        );
         res.status(500).json({ error: "Error al crear el usuario" });
       });
   });
@@ -45,7 +50,7 @@ router.post("/login", (req, res) => {
         id: user.id,
         email: user.email,
         name: user.name,
-        phone: user.phone,
+        lastName: user.lastName,
         isAdmin: user.isAdmin,
       };
       const token = generateToken(payload);
@@ -65,16 +70,18 @@ router.post("/logout", (req, res) => {
   res.sendStatus(204);
 });
 
-router.put("/user/profile", validateAuth, (req, res) => {
+router.put("/profile", validateAuth, (req, res) => {
   const userId = req.user.id;
-  const { name } = req.body;
+  const { name, lastName } = req.body;
   console.log(name);
 
   User.findByPk(userId)
     .then((user) => {
+      console.log(user);
       if (!user) {
         return res.status(400);
       }
+      user.lastName = lastName;
       user.name = name;
       return user.save();
     })

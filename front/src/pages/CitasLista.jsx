@@ -33,7 +33,8 @@ function CitasLista() {
             <div>
               <p>Fecha: {cita.fecha}</p>
               <p>Hora: {cita.hora}</p>
-              <p>Usuario: {cita.userName}</p>
+              <p>Usuario: {cita.user.name}</p>
+              <p>Email: {cita.user.email}</p>
             </div>
             <button
               className="text-red-500 hover:text-red-700 focus:outline-none"
