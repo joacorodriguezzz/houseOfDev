@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { IoWater, IoHome, IoCash, IoExpand } from "react-icons/io5";
 
 function SingleView() {
   const { id } = useParams();
@@ -24,7 +25,7 @@ function SingleView() {
       axios
         .post(`http://localhost:3001/api/citas/reservar`, citaData)
         .then((response) => {
-          alert("Cita creada con exito!", response);
+          alert("Cita creada con éxito!", response);
         })
         .catch((error) => {
           alert("Fecha y horario no disponible!");
@@ -67,7 +68,7 @@ function SingleView() {
             <img
               src={property?.img}
               alt="property"
-              className="rounded-xl w-70 h-100"
+              className="rounded-xl w-70 h-100 shadow-xl"
             />
 
             <div className="mt-4">
@@ -83,39 +84,13 @@ function SingleView() {
             <div className="flex flex-wrap ">
               <div className="w-full p-2 lg:w-1/2">
                 <div className="flex items-center h-full p-4 bg-blue-100 rounded">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 mr-3 text-green-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+                  <IoWater className="w-6 h-6 mr-3 text-blue-500" />
                   <span className="font-medium">{property?.baños} Baños</span>
                 </div>
               </div>
               <div className="w-full p-2 lg:w-1/2">
                 <div className="flex items-center h-full p-4 bg-blue-100 rounded">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 mr-3 text-green-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+                  <IoHome className="w-6 h-6 mr-3 text-blue-500" />
                   <span className="font-medium">
                     {property?.cantidadAmbientes} Ambientes
                   </span>
@@ -124,20 +99,7 @@ function SingleView() {
 
               <div className="w-full p-2 lg:w-1/2">
                 <div className="flex items-center h-full p-4 bg-blue-100 rounded">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 mr-3 text-green-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+                  <IoExpand className="w-6 h-6 mr-3 text-blue-500" />
                   <span className="font-medium">
                     {property?.metrosCuadrados} M2
                   </span>
@@ -146,23 +108,11 @@ function SingleView() {
 
               <div className="w-full p-2 lg:w-1/2">
                 <div className="flex items-center h-full p-4 bg-blue-100 rounded">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-6 h-6 mr-3 text-green-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="3"
-                      d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                    />
-                  </svg>
+                  <IoCash className="w-6 h-6 mr-3 text-blue-500" />
                   <span className="font-medium">{property?.precio} USD</span>
                 </div>
               </div>
+
               <div class="">
                 <p class="mt-8 font-serif text-xl font-bold text-blue-900">
                   Seleccione una fecha

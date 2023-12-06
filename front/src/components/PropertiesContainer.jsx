@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { FaDollarSign, FaPlus } from "react-icons/fa";
-import { FaBed } from "react-icons/fa";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { FaTrash } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
+import {
+  FaSearch,
+  FaTrash,
+  FaBed,
+  FaMapMarkerAlt,
+  FaDollarSign,
+} from "react-icons/fa";
 
 function PropertiesContainer() {
   const [properties, setProperties] = useState([]);
@@ -54,7 +56,7 @@ function PropertiesContainer() {
             <div className="relative mb-4 flex w-full flex-wrap items-stretch">
               <input
                 type="search"
-                className="relative m-0 block flex-auto rounded border border-solid border-[#dccebe] bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary shadow-md"
+                className="relative m-0 block flex-auto rounded-full border border-solid border-[#dccebe] bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary shadow-md"
                 placeholder="Search"
                 aria-label="Search"
                 aria-describedby="button-addon2"
