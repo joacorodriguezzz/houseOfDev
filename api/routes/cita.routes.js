@@ -55,7 +55,10 @@ router.post("/reservar", async (req, res) => {
 router.get("/citas-lista", async (req, res) => {
   try {
     citas = await Citas.findAll({
-      include: [{ model: User }, { model: Properties }],
+      include: [
+        { model: User, attributes: ["name", "email"] },
+        { model: Properties },
+      ],
     });
     res.send(citas);
   } catch (error) {

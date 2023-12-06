@@ -64,7 +64,11 @@ function SingleView() {
             <h1 className="mb-4 text-2xl font-medium text-center text-gray-900 lg:text-3xl">
               {property?.ubicacion}
             </h1>
-            <img src={property?.img} alt="property" className="w-full" />
+            <img
+              src={property?.img}
+              alt="property"
+              className="rounded-xl w-70 h-100"
+            />
 
             <div className="mt-4">
               <h4 className="text-2xl font-bold">Descripcion</h4>
@@ -186,7 +190,7 @@ function SingleView() {
                     type="date"
                     min="2023-12-01"
                     max="2023-12-31"
-                    class="datepicker-input block w-full rounded-lg border border-red-300 bg-red-50 p-2.5 pl-10 text-red-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
+                    class="datepicker-input block w-full rounded-lg border border-blue-100 bg-[#f9f9f9] p-2.5 pl-10 text-blue-800 outline-none ring-opacity-30 placeholder:text-emerald-800 focus:ring focus:ring-emerald-300 sm:text-sm"
                     value={fecha}
                     onChange={handleFechaChange}
                   />
@@ -200,7 +204,7 @@ function SingleView() {
                 <div class="mt-4 grid grid-cols-4 gap-2 lg:max-w-xl">
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("09:00")}
                   >
                     09:00
@@ -208,7 +212,7 @@ function SingleView() {
 
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("11:00")}
                   >
                     11:00
@@ -216,7 +220,7 @@ function SingleView() {
 
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("12:00")}
                   >
                     12:00
@@ -224,7 +228,7 @@ function SingleView() {
 
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("13:00")}
                   >
                     13:00
@@ -232,7 +236,7 @@ function SingleView() {
 
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("16:00")}
                   >
                     16:00
@@ -240,7 +244,7 @@ function SingleView() {
 
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("17:00")}
                   >
                     17:00
@@ -248,7 +252,7 @@ function SingleView() {
 
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("18:00")}
                   >
                     18:00
@@ -256,13 +260,13 @@ function SingleView() {
 
                   <button
                     id="btn"
-                    class="rounded-lg bg-red-100 px-4 py-2 font-medium text-red-900 active:scale-95 hover:bg-red-300 focus:bg-red-600 focus:text-white"
+                    class="rounded-lg bg-blue-100 px-4 py-2 font-medium text-black active:scale-95 hover:bg-blue-300 focus:bg-blue-600 focus:text-white"
                     onClick={() => handleHoraClick("19:00")}
                   >
                     19:00
                   </button>
                   <button
-                    class="mt-8 w-56 rounded-full border-8 border-red-500 bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:translate-y-1"
+                    class="mt-8 w-56 rounded-xl border-8 border-red-500 bg-red-600 px-10 py-4 text-lg font-bold text-white transition hover:translate-y-1"
                     onClick={handleAgend}
                   >
                     Agendar

@@ -8,12 +8,12 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("+54");
+  const [lastName, setLastName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  console.log(lastName);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -25,7 +25,7 @@ export default function Register() {
       setError(false);
     }
 
-    if (name === "" || password === "" || email === "" || phone === "") {
+    if (name === "" || password === "" || email === "" || lastName === "") {
       setError(true);
       return;
     } else setError(false);
@@ -34,15 +34,17 @@ export default function Register() {
       .post("http://localhost:3001/api/user/register", {
         email: email,
         name: name,
-        phone: phone,
+        lastName: lastName,
         password: password,
       })
+
       .then((res) => {
         dispatch(setUser({ id: res.data.id, name: res.data.name }));
         alert("Registro exitoso");
         navigate("/login");
       })
-      .catch((err) => alert("Ya existe un usuario con ese email"));
+      .catch((err) => console.log(err));
+    console.log(lastName);
   };
 
   return (
@@ -72,7 +74,7 @@ export default function Register() {
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="username"
           >
-            Username
+            Nombre
           </label>
           <input
             className="bg-[#F7F3EE] shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -83,23 +85,21 @@ export default function Register() {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
+
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
             htmlFor="username"
           >
-            Número de telefono
+            Apellido
           </label>
           <input
             className="bg-[#F7F3EE] shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="username"
+            id="lastname"
             type="text"
-            placeholder="+54 *******"
-            value={phone}
-            onChange={(e) => {
-              const sanitizedValue = e.target.value.replace(/[^0-9+]/g, "");
-              setPhone(sanitizedValue);
-            }}
+            placeholder="Apellido"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
           />
         </div>
         <div className="mb-6">
