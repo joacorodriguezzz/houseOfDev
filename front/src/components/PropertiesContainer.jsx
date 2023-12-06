@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { FaDollarSign } from "react-icons/fa";
+import { FaDollarSign, FaPlus } from "react-icons/fa";
 import { FaBed } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
@@ -11,6 +11,8 @@ import { FaSearch } from "react-icons/fa";
 function PropertiesContainer() {
   const [properties, setProperties] = useState([]);
   const [buscar, setBuscar] = useState("");
+  const [precio, setPrecio] = useState("");
+  const [ambientes, setAmbientes] = useState("");
 
   const user = useSelector((state) => state.user);
 
@@ -45,10 +47,10 @@ function PropertiesContainer() {
   };
 
   return (
-    <div className="min-h-[100vh] w-[100%]">
+    <div className="min-h-[100vh] w-[100%] bg-[#f9f9f9  ">
       <div className="container mx-auto p-4">
         <div className="mb-4">
-          <div className="mb-3 xl:w-96">
+          <div className="mb-3 xl:w-96 ">
             <div className="relative mb-4 flex w-full flex-wrap items-stretch">
               <input
                 type="search"
@@ -59,13 +61,55 @@ function PropertiesContainer() {
                 value={buscar}
                 onChange={handleSearch}
               />
-
+            </div>
+            <div className="flex">
+              <div class="w-full md:w-1/2 px-3">
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                  for="grid-adress"
+                >
+                  Precio maximo
+                </label>
+                <input
+                  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-price"
+                  type="text"
+                  placeholder="$"
+                  value={precio}
+                  onChange={(e) => setPrecio(e.target.value)}
+                ></input>
+              </div>
+              <div>
+                <label
+                  class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 divide-x-100"
+                  for="grid-state"
+                >
+                  Ambientes
+                </label>
+                <select
+                  class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                  id="grid-state"
+                  placeholder="Ambientes deseados"
+                  value={ambientes}
+                  onChange={(e) => setAmbientes(e.target.value)}
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                </select>
+              </div>
               <span
                 className={`input-group-text flex items-center whitespace-nowrap rounded px-3 py-1.5 text-center text-base font-normal ${
                   user.isAdmin ? "text-blue-800" : "text-red-500"
                 }`}
               >
-                <FaSearch />
+                <button>
+                  <FaSearch onChange={handleSearch} />
+                </button>
               </span>
             </div>
           </div>
