@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const db = require("./configs/db");
-const models = require("./models");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 

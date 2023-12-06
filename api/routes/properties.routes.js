@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Properties, User } = require("../models/");
+const { Properties } = require("../models/");
 
 router.get("/propiedades", (req, res) => {
   Properties.findAll()
